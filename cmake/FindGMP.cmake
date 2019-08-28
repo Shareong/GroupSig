@@ -1,3 +1,6 @@
+if( TARGET gmp )
+    return()
+endif()
 
 unset( GMP_LIBRARIES CACHE )
 unset( GMP_LIBRARIES )
@@ -19,8 +22,10 @@ message(STATUS "GMP:${GMP_LIBRARIES}")
 
 get_filename_component( GMP_LIB_DIR "${GMP_LIBRARIES}" DIRECTORY )
 
-# message("#######GMP_LIBRARIES: ${GMP_LIBRARIES}")
-# message("#######GMP_INCLUDE_DIR: ${GMP_INCLUDE_DIR}")
+add_library( gmp UNKNOWN IMPORTED )
+set_property( TARGET gmp PROPERTY IMPORTED_LOCATION "${GMP_LIBRARIES}" )
+set_property( TARGET gmp PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${GMP_INCLUDE_DIR}" )
+
 mark_as_advanced(
     GMP_LIBRARIES
     GMP_INCLUDE_DIR

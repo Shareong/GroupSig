@@ -1,5 +1,5 @@
 include(ExternalProject)
-set(PBC_SIG_PATCH cp ${CMAKE_SOURCE_DIR}/script/patch/pbc_sig.patch ${CMAKE_SOURCE_DIR}/deps/src && patch -f -p0 < ${CMAKE_SOURCE_DIR}/deps/src/pbc_sig.patch)
+set(PBC_SIG_PATCH cp ${CMAKE_SOURCE_DIR}/patch/pbc_sig.patch ${CMAKE_SOURCE_DIR}/deps/src && patch -f -p0 < ${CMAKE_SOURCE_DIR}/deps/src/pbc_sig.patch)
 
 set(PBC_CONFIG_COMMAND ./configure --prefix=${CMAKE_SOURCE_DIR}/deps)
 
