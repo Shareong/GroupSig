@@ -21,10 +21,6 @@
  * @function: interface of group signature algorithm 
  */
 #pragma once
-#include <cryptopp/integer.h>
-
-#include "ring-sig/Common.h"
-#include "ring-sig/LinkableRingSig_Impl.h"
 
 #if !defined(__cplusplus)
 extern "C"
@@ -32,12 +28,12 @@ extern "C"
 #endif
 
 #if defined(__cplusplus)
-  namespace RingSigApi
-  {
-  namespace LinkableRingSig
-  {
+   namespace RingSigApi
+   {
+   namespace LinkableRingSig
+   {
 #endif
-  /* @function: generate params for specified ring
+   /* @function: generate params for specified ring
      * @params: 1. param_info: return value, json
      *          string of ring params
      *          2. bit_len: length of ring param element
@@ -46,10 +42,10 @@ extern "C"
      *       other ret code: generate params for specified ring
      *       failed
      */
-  int setup_ring(std::string &param_info,
-                 const int &bit_len = 1024);
+   int setup_ring(std::string &param_info,
+                  const int &bit_len = 1024);
 
-  /* @function: generate private key for member of 
+   /* @function: generate private key for member of 
      *            specified ring
      * @params: 1. private_key_info: return value, private
      *            key used to generate signature
@@ -63,12 +59,12 @@ extern "C"
      *       other ret code: generate private && public key
      *       for specified member failed
      */
-  int join_ring(std::string &private_key_info,
-                std::string &public_key_info,
-                const std::string &param_info,
-                const std::string &pos);
+   int join_ring(std::string &private_key_info,
+                 std::string &public_key_info,
+                 const std::string &param_info,
+                 const std::string &pos);
 
-  /* @function: generate signature with linkable ring sig
+   /* @function: generate signature with linkable ring sig
      *      algorithm for specified ring member
      * @param: 1. sig: return value, generated signature
      *         2. message: plain text
@@ -81,13 +77,13 @@ extern "C"
      * @ret: SUCCESS: callback linkable ring signature algorithm succeed
      *       other ret code: callback linkable ring signature algorithm failed
      */
-  int ring_sig(std::string &sig,
-               const std::string &message,
-               const std::vector<std::string> &public_key_list,
-               const std::string &private_key_info,
-               const std::string &param_info);
+   int ring_sig(std::string &sig,
+                const std::string &message,
+                const std::vector<std::string> &public_key_list,
+                const std::string &private_key_info,
+                const std::string &param_info);
 
-  /* @function: verify given signature is valid or not
+   /* @function: verify given signature is valid or not
      * @params: 1. valid: return value, 
                true: signature is valid; false: signature is invalid;
      *         2. sig: signature to be verified
@@ -97,13 +93,13 @@ extern "C"
      * @ret: SUCCESS: callback linkable ring verify algorithm succeed
      *          other ret code: callback verify algorithm failed
      */
-  int ring_verify(bool &valid, std::string const &sig,
-                  std::string const &message,
-                  std::string const &param_info);
+   int ring_verify(bool &valid, std::string const &sig,
+                   std::string const &message,
+                   std::string const &param_info);
 
 #if defined(__cplusplus)
-  }
-  }
+   }
+   }
 #endif
 #if !defined(__cplusplus)
 }

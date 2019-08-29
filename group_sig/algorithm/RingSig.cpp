@@ -20,9 +20,10 @@
  * @date:2018.03.06
  * @function: interface of group signature algorithm 
  */
-
+#include <cryptopp/integer.h>
 #include "group_sig/devcore/easylog.h"
-
+#include "ring-sig/Common.h"
+#include "ring-sig/LinkableRingSig_Impl.h"
 #include "RingSig.h"
 
 #if !defined(__cplusplus)

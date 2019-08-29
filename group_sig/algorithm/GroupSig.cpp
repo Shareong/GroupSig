@@ -22,10 +22,9 @@
  */
 
 #include <time.h>
-
+#include "GroupSigFactory.h"
 #include "group_sig/devcore/easylog.h"
 #include "group_sig/devcore/CommonFunc.h"
-
 #include "GroupSig.h"
 
 using namespace dev::eth;
