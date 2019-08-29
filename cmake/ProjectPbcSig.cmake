@@ -23,7 +23,7 @@ add_dependencies(pbc_sig pbc)
 
 ExternalProject_Get_Property(pbc_sig INSTALL_DIR)
 add_library(Pbc_sig STATIC IMPORTED)
-set(PBC_SIG_INCLUDE_DIR ${INSTALL_DIR}/include)
+set(PBC_SIG_INCLUDE_DIR ${INSTALL_DIR}/include/)
 set(PBC_SIG_LIBRARY ${INSTALL_DIR}/lib/libpbc_sig.a)
 file(MAKE_DIRECTORY ${PBC_SIG_INCLUDE_DIR})  # Must exist.
 file(MAKE_DIRECTORY ${INSTALL_DIR}/lib/)  # Must exist.
