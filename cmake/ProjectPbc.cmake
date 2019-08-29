@@ -1,7 +1,6 @@
 include(ExternalProject)
 
 set(PBC_PBCSTRAP_COMMAND ./configure)
-#set(PBC_INSTALL_COMMAND make install)
 
 ExternalProject_Add(pbc
     PREFIX ${CMAKE_SOURCE_DIR}/deps
