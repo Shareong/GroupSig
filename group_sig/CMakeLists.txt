@@ -34,7 +34,7 @@ include_directories(goup_sig PUBLIC ${GMP_INCLUDE_DIR})
 
 add_library(group_sig STATIC ${SRC_LIST} ${HEADERS})
 
-target_link_libraries(group_sig PUBLIC Pbc_sig Pbc gmp Cryptopp) 
+target_link_libraries(group_sig PUBLIC Pbc_sig Pbc gmp Cryptopp Boost::Filesystem Boost::System) 
 
 install(TARGETS group_sig RUNTIME DESTINATION bin/ ARCHIVE DESTINATION lib/ LIBRARY DESTINATION lib/)
 INSTALL(FILES ${ALGORITHM_BBS04_HEADERS} DESTINATION include/group_sig/algorithm/bbs04/) 
