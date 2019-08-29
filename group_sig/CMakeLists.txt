@@ -35,10 +35,10 @@ include_directories(goup_sig PUBLIC ${GMP_INCLUDE_DIR})
 add_library(group_sig STATIC ${SRC_LIST} ${HEADERS})
 
 target_link_libraries(group_sig PUBLIC Pbc_sig Pbc gmp)
-target_link_libraries(group_sig PUBLIC Cryptopp Boost::Filesystem Boost::Thread pthread) 
+target_link_libraries(group_sig PUBLIC Cryptopp Boost::Filesystem Boost::Thread Boost::System) 
 
-install(TARGETS group_sig RUNTIME DESTINATION bin/ ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
+install(TARGETS group_sig RUNTIME DESTINATION bin/ ARCHIVE DESTINATION lib/ LIBRARY DESTINATION lib/)
 INSTALL(FILES ${ALGORITHM_BBS04_HEADERS} DESTINATION include/group_sig/algorithm/bbs04/) 
 INSTALL(FILES ${ALGORITHM_RING_SIG_HEADERS} DESTINATION include/group_sig/algorithm/ring-sig/) 
 INSTALL(FILES ${ALGORITHM_HEADERS} DESTINATION include/group_sig/algorithm/) 
-INSTALL(FILES ${DEVCORE_HEADERS} DESTINATION include/group_sig/devcore) 
+INSTALL(FILES ${DEVCORE_HEADERS} DESTINATION include/group_sig/devcore/) 
