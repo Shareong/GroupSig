@@ -24,19 +24,18 @@ list(APPEND SRC_LIST ${DEVCORE_SRC})
 list(APPEND HEADERS ${DEVCORE_HEADERS})
 
 find_library(boost REQUIRED)
-
 find_package(GMP REQUIRED)
 
 include_directories(goup_sig PUBLIC ${BOOST_INCLUDE_DIR})
-include_directories(${PBC_INCLUDE_DIR})
-include_directories(${CRYPTOPP_INCLUDE_DIR})
-include_directories(${PBC_SIG_INCLUDE_DIR})
-include_directories(${GMP_INCLUDE_DIR})
+include_directories(goup_sig PUBLIC ${PBC_INCLUDE_DIR})
+include_directories(goup_sig PUBLIC ${CRYPTOPP_INCLUDE_DIR})
+include_directories(goup_sig PUBLIC ${PBC_SIG_INCLUDE_DIR})
+include_directories(goup_sig PUBLIC ${GMP_INCLUDE_DIR})
 
 add_library(group_sig STATIC ${SRC_LIST} ${HEADERS})
 
-target_link_libraries(group_sig Pbc_sig Pbc gmp)
-target_link_libraries(group_sig Cryptopp Boost::Filesystem Boost::Thread pthread) 
+target_link_libraries(group_sig PUBLIC Pbc_sig Pbc gmp)
+target_link_libraries(group_sig PUBLIC Cryptopp Boost::Filesystem Boost::Thread pthread) 
 
 install(TARGETS group_sig RUNTIME DESTINATION bin/ ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 INSTALL(FILES ${ALGORITHM_BBS04_HEADERS} DESTINATION include/group_sig/algorithm/bbs04/) 
