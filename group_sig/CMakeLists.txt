@@ -33,7 +33,7 @@ include_directories(${CRYPTOPP_INCLUDE_DIR})
 include_directories(${PBC_SIG_INCLUDE_DIR})
 include_directories(${GMP_INCLUDE_DIR})
 
-add_library(group_sig ${SRC_LIST} ${HEADERS})
+add_library(group_sig STATIC ${SRC_LIST} ${HEADERS})
 
 target_link_libraries(group_sig Pbc_sig Pbc gmp)
 target_link_libraries(group_sig Cryptopp Boost::Filesystem Boost::Thread pthread) 
