@@ -1,9 +1,8 @@
 include(ExternalProject)
 set(PBC_SIG_PATCH cp ${CMAKE_SOURCE_DIR}/patch/pbc_sig.patch ${CMAKE_SOURCE_DIR}/deps/src && patch -f -p0 < ${CMAKE_SOURCE_DIR}/deps/src/pbc_sig.patch)
 
-set(PBC_CONFIG_COMMAND ./configure)
+set(PBC_CONFIG_COMMAND ./configure CPPFLAGS=-I${CMAKE_SOURCE_DIR}/deps/include LDFLAGS=-L${CMAKE_SOURCE_DIR}/deps/lib --prefix=${CMAKE_SOURCE_DIR}/deps)
 
-# message("#### cmake source dir: ${CMAKE_SOURCE_DIR}")
 ExternalProject_Add(pbc_sig
     PREFIX ${CMAKE_SOURCE_DIR}/deps
     DOWNLOAD_NO_PROGRESS 1
@@ -18,15 +17,14 @@ ExternalProject_Add(pbc_sig
     LOG_BUILD 1
     LOG_INSTALL 1
 )
-
 add_dependencies(pbc_sig pbc)
 
 ExternalProject_Get_Property(pbc_sig INSTALL_DIR)
 add_library(Pbc_sig STATIC IMPORTED)
-set(PBC_SIG_INCLUDE_DIR ${INSTALL_DIR}/include/)
+set(PBC_SIG_INCLUDE_DIR ${INSTALL_DIR}/include)
 set(PBC_SIG_LIBRARY ${INSTALL_DIR}/lib/libpbc_sig.a)
 file(MAKE_DIRECTORY ${PBC_SIG_INCLUDE_DIR})  # Must exist.
-file(MAKE_DIRECTORY ${INSTALL_DIR}/lib/)  # Must exist.
+file(MAKE_DIRECTORY ${INSTALL_DIR}/lib)  # Must exist.
 set_property(TARGET Pbc_sig PROPERTY IMPORTED_LOCATION ${PBC_SIG_LIBRARY})
 set_property(TARGET Pbc_sig PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${PBC_SIG_INCLUDE_DIR})
 add_dependencies(Pbc_sig pbc_sig)

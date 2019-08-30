@@ -1,4 +1,4 @@
-if( TARGET gmp )
+if( TARGET Gmp )
     return()
 endif()
 
@@ -22,9 +22,9 @@ message(STATUS "GMP:${GMP_LIBRARIES}")
 
 get_filename_component( GMP_LIB_DIR "${GMP_LIBRARIES}" DIRECTORY )
 
-add_library( gmp UNKNOWN IMPORTED )
-set_property( TARGET gmp PROPERTY IMPORTED_LOCATION "${GMP_LIBRARIES}" )
-set_property( TARGET gmp PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${GMP_INCLUDE_DIR}" )
+add_library( Gmp UNKNOWN IMPORTED )
+set_property( TARGET Gmp PROPERTY IMPORTED_LOCATION "${GMP_LIBRARIES}" )
+set_property( TARGET Gmp PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${GMP_INCLUDE_DIR}" )
 
 mark_as_advanced(
     GMP_LIBRARIES
